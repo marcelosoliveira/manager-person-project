@@ -16,5 +16,11 @@ Nesta live coding vamos desenvolver um pequeno sistema para o gerenciamento de p
 
 Acesso a Api local: http://localhost:3000/api/v1/
 
-Documnetação Swagger: http://localhost:3000/swagger-ui.html#/
+Documentação Swagger: http://localhost:3000/swagger-ui.html#/
+
+## Deploy Heroku
+
+Documentação Swagger: https://manager-person.herokuapp.com/swagger-ui.html#/
+
+Acesso a Api remota: https://manager-person.herokuapp.com/api/v1/
 
