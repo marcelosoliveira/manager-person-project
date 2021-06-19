@@ -20,12 +20,11 @@ public class PhoneDTO {
 
     private Long id;
 
-    @NotNull(message = "Field cannot be null")
+    @NotBlank(message = "Field cannot be null or empty")
     @Enumerated(EnumType.STRING)
     private PhoneEnum type;
 
-    @NotBlank(message = "Field cannot be empty")
-    @NotNull(message = "Field cannot be null")
+    @NotBlank(message = "Field cannot be null or empty")
     @Size(min = 13, max = 14, message = "Enter a minimum of 13 number and a maximum of 14")
     private String number;
 
