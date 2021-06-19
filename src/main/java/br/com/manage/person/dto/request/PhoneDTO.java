@@ -20,7 +20,7 @@ public class PhoneDTO {
 
     private Long id;
 
-    @NotBlank(message = "Field cannot be null or empty")
+    @NotNull(message = "Field cannot be null")
     @Enumerated(EnumType.STRING)
     private PhoneEnum type;
 
