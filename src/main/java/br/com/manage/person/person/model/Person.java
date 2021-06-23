@@ -2,10 +2,7 @@ package br.com.manage.person.person.model;
 
 import br.com.manage.person.phone.model.Phone;
 import br.com.manage.person.user.model.User;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -13,6 +10,7 @@ import java.util.List;
 
 @Data
 @Entity
+@Builder
 @EqualsAndHashCode(of = "id")
 @AllArgsConstructor
 @NoArgsConstructor

@@ -1,0 +1,13 @@
+CREATE DATABASE
+
+CREATE TABLE USER
+(
+    id UUID,
+    USERNAME VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    CONSTRAINT users_pk PRIMARY KEY (id),
+    CONSTRAINT uk_k8d0f2n7n88w1a16yhua64onx UNIQUE (user_name)
+);
+
+INSERT INTO USER(id, username, password)
+	VALUES ('86841305-700b-4986-8780-334b5c85475c', 'jow', '12345678');

@@ -1,10 +1,7 @@
 package br.com.manage.person.user.model;
 
 import br.com.manage.person.person.model.Person;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -13,6 +10,7 @@ import java.util.UUID;
 
 @Data
 @Entity
+@Builder
 @EqualsAndHashCode(of = "id")
 @AllArgsConstructor
 @NoArgsConstructor
