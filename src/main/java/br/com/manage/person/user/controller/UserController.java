@@ -4,6 +4,7 @@ import br.com.manage.person.dto.request.UserDTO;
 import br.com.manage.person.dto.response.MessageResponseDTO;
 import br.com.manage.person.user.service.impl.UserService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;

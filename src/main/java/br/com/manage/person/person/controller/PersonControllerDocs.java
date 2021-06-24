@@ -6,6 +6,8 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.util.List;
 
@@ -16,6 +18,7 @@ public interface PersonControllerDocs {
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Registration ok")
     })
+    @ResponseStatus(HttpStatus.CREATED)
     MessageResponseDTO createPeople(PersonDTO personDTO);
 
     @ApiOperation(value = "List all peoples")

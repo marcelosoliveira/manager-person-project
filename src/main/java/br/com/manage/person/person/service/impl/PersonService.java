@@ -4,12 +4,12 @@ import br.com.manage.person.dto.request.PersonDTO;
 import br.com.manage.person.dto.response.MessageResponseDTO;
 import br.com.manage.person.exception.PersonNotFoundException;
 import br.com.manage.person.exception.UserNameExistsException;
+import br.com.manage.person.mapper.PersonMapper;
 import br.com.manage.person.person.model.Person;
 import br.com.manage.person.person.repository.PersonRepository;
 import br.com.manage.person.person.service.interfaces.PersonInterface;
 import br.com.manage.person.security.UserLoginSecurity;
 import lombok.AllArgsConstructor;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -21,18 +21,16 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class PersonService implements PersonInterface {
 
+    private final PersonMapper personMapper = PersonMapper.INSTANCE;
+
     private PersonRepository personRepository;
 
     private UserLoginSecurity userLoginSecurity;
 
-    private ModelMapper modelMapper;
-
     public MessageResponseDTO create(PersonDTO personDTO) {
         verifyPerson(personDTO.getCpf());
-        LocalDate date = LocalDate.parse(personDTO.getBirthDate());
 
-        Person person = toPerson(personDTO);
-        person.setBirthDate(date);
+        Person person = personMapper.toPersonModel(personDTO);
         person.setUser(this.userLoginSecurity.getLoginUser());
 
         this.personRepository.save(person);
@@ -42,25 +40,23 @@ public class PersonService implements PersonInterface {
     public List<PersonDTO> findPeopleAll() {
         List<Person> listPerson = this.personRepository.findAll();
         return listPerson.stream()
-                .map(this::toPersonDTO)
+                .map(personMapper::toPersonDTO)
                 .collect(Collectors.toList());
     }
 
     public PersonDTO findPeople(Long id) {
         verifyPersonExist(id);
         Person person = this.personRepository.getById(id);
-        PersonDTO personDTO = toPersonDTO(person);
+        PersonDTO personDTO = personMapper.toPersonDTO(person);
 
         return personDTO;
     }
 
     public MessageResponseDTO updatePeople(Long id, PersonDTO personDTO) {
         verifyPersonExist(id);
-        LocalDate date = LocalDate.parse(personDTO.getBirthDate());
 
-        Person person = toPerson(personDTO);
+        Person person = personMapper.toPersonModel(personDTO);
         person.setId(id);
-        person.setBirthDate(date);
         person.setUser(this.userLoginSecurity.getLoginUser());
 
         this.personRepository.save(person);
@@ -79,17 +75,6 @@ public class PersonService implements PersonInterface {
                 .builder()
                 .message(message)
                 .build();
-    }
-
-
-    @Override
-    public Person toPerson(PersonDTO personDTO) {
-        return this.modelMapper.map(personDTO, Person.class);
-    }
-
-    @Override
-    public PersonDTO toPersonDTO(Person person) {
-        return this.modelMapper.map(person, PersonDTO.class);
     }
 
     @Override

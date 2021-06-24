@@ -7,8 +7,7 @@ import br.com.manage.person.user.model.User;
 public interface UserInterface {
 
     String encodePassword(String password);
+
     void verifyUsername(String username) throws UserNameExistsException;
-    User toUser(UserDTO userDTO);
-    UserDTO toUserDTO(User user);
 
 }
