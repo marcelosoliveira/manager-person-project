@@ -11,6 +11,7 @@ Nesta live coding vamos desenvolver um pequeno sistema para o gerenciamento de p
 * Desenvolvimento de operações de gerenciamento de usuários (Cadastro, leitura, atualização e remoção de pessoas de um sistema).
 * Relação de cada uma das operações acima com o padrão arquitetural REST, e a explicação de cada um dos conceitos REST envolvidos durante o desenvolvimento do projeto.
 * Criação da segurança da API com SpringSecurity com OAUTH2
+* Foi Implementado teste unitário e integração
 * Desenvolvimento da documentação da API com Swagger
 * Implantação do sistema na nuvem através do Heroku
 
